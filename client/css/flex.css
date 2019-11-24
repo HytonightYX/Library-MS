@@ -1,0 +1,22 @@
+/* flex */
+.flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-column-reverse {
+    flex-direction: column-reverse;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-center {
+    justify-content: center;
+}
+.flex-space-aroud {
+    justify-content: space-around;
+}
+.flex-space-between {
+    justify-content: space-between;
+}
