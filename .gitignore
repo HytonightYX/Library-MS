@@ -6,3 +6,5 @@
 .idea
 .vscode
 *.jpg
+.DS_Store
+*.png

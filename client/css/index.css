@@ -24,6 +24,10 @@ a {
     width: 300px;
     height: 100%;
     background: red;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    padding-top: 18px;
 }
 .container-menu #block {
     flex: 1;
@@ -47,6 +51,11 @@ a {
 }
 .container-menu-search {
     width: 115px;
+    padding-top: 30px;
+    text-align: center;
+}
+#search {
+    cursor: pointer;
 }
 .container-menu-info {
     width: 100px;
@@ -136,6 +145,17 @@ a {
     font-size: 20px;
     margin: 0 0 35px 0;
 }
+.main-title:before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    vertical-align: top;
+    background-image: url(./../assets/icon/app.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 .main-left-row:not(:first-child) {
     margin-top: 6px;
 }
@@ -147,7 +167,13 @@ a {
     background: #ddded3;
     border: 1px solid #bfc0b5;
     text-align: center;
-    font-size: 8px;
+    font-size: 12px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.main-left-item:hover, .main-right-item:hover {
+    border-color: red;
+    color: red;
 }
 .main-right {
     width: 160px;
@@ -155,12 +181,17 @@ a {
 .main-left-item {
     width: 120px;
     height: 150px;
-    padding: 20px 10px;
+    padding: 35px 10px;
 }
 .main-right-item {
     width: auto;
     height: 150px;
     padding-top: calc(75px - 0.5em);
+    font-size: 18px;
+}
+.main-left-item::first-letter {
+    font-size: 36px;
+    font-weight: 300;
 }
 .main-right-item:not(:first-child) {
     margin-top: 6px;
@@ -176,6 +207,7 @@ a {
     height: 100%;
     display: inline-block;
     background: #fff;
+    flex: 1;
 }
 .main-topic-item .left {float: left;}
 .main-topic-item .right {float: right;}
@@ -188,7 +220,7 @@ a {
     overflow: hidden;
 }
 .topic-item-desc {
-    padding: 50px 0;
+    padding: 50px 10px;
 }
 .topic-item-desc h4 {
     margin: 0;
@@ -196,7 +228,7 @@ a {
 .topic-item-desc p {
     margin: 18px 0 0 0;
     width: 11em;
-    font-size: 8px;
+    font-size: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -204,16 +236,12 @@ a {
     -webkit-box-orient: vertical;
 }
 .topic-item-desc.left {
-    padding-left: 40px;
-    padding-right: 8px;
     text-align: right;
 }
 .topic-item-desc.right {
-    padding-left: 10px;
-    padding-right: 40px;
     text-align: left;
 }
-.topic-item-desc.left:after, .topic-item-desc.right:before {
+.topic-item-pic.left:after, .topic-item-pic.right:before {
     content: '';
     width: 0;
     height: 0;
@@ -221,11 +249,21 @@ a {
     top: calc(50% - 5px);
     border: 10px solid;
 }
-.topic-item-desc.left:after {
-    right: -20px;
+.topic-item-pic.left:after {
+    right: 0;
+    border-color: transparent #fff transparent transparent;
+}
+.topic-item-pic.right:before {
+    left: 0;
     border-color: transparent transparent transparent #fff;
 }
-.topic-item-desc.right:before {
-    left: -20px;
-    border-color: transparent #fff transparent transparent;
+/* footer */
+.container-footer {
+    width: 100%;
+    padding: 30px 0;
+    background: #ccccbb;
+    text-align: center;
+}
+.container-footer p {
+    letter-spacing: 2px;
 }
