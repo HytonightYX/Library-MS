@@ -10,6 +10,22 @@
 
 .g-menu {
   height: 100%;
+
+  .m-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #D8D8D8;
+
+    .header-right {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 230px;
+    }
+  }
 }
 
 .m-logo {
@@ -44,6 +60,7 @@
   padding: 0 24px;
   cursor: pointer;
   transition: color 0.3s;
+  display: flex;
 }
 
 .trigger:hover {
@@ -55,4 +72,6 @@
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
 }
+
+
 
