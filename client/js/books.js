@@ -1,4 +1,4 @@
-{
+var data = {
   "count": 100,
   "start": 0,
   "total": 1091830,
