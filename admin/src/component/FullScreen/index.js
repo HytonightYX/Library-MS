@@ -61,6 +61,6 @@ export default class FullScreen extends React.Component {
 	}
 
 	render() {
-		return <Icon style={{fontSize: '20px', cursor: 'pointer'}} type="fullscreen" onClick={this.handleFullScrren}/>
+		return <Icon style={{fontSize: '20px', cursor: 'pointer'}} type={this.state.isFullScreen ? "fullscreen-exit" : "fullscreen"} onClick={this.handleFullScrren}/>
 	}
 }

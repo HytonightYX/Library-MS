@@ -30,12 +30,16 @@ function callProc(sql, params, res, cb) {
 }
 
 /**
- * 取所有用户信息
+ * 测试接口
  */
 app.get('/test', async function (req, res) {
 	res.status(200).json({code: 200, data: {}, msg: '接口测试成功'})
 })
 
+
+/**
+ * 登录
+*/
 app.post('/login', async function (req, res) {
 	let sql = `CALL PROC_USER_LOGIN(?)`
 	const params = req.body

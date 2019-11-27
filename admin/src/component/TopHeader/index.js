@@ -10,11 +10,14 @@ import FullScreen from '@/components/FullScreen'
 import Tags from './Tags'
 import BasicDrawer from '@/components/BasicDrawer'
 
+import { inject, observer } from 'mobx-react'
+import { computed } from 'mobx'
+
+@inject('userStore')
+@observer
 class TopHeader extends Component {
 	state = {visible: false}
 	handleLogout = () => {
-		this.props.setUserInfo({})
-		this.props.emptyTag()
 		localStorage.removeItem('isLogin')
 		localStorage.removeItem('userInfo')
 		this.props.history.push('/')
@@ -28,6 +31,11 @@ class TopHeader extends Component {
 			this.props.setUserInfo({})
 			this.props.history.push('/login')
 		}
+	}
+
+	@computed
+	get currUser() {
+		return this.props.userStore.currUser
 	}
 
 	toNews = () => {
