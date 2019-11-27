@@ -14,7 +14,11 @@ export default () => (
 						<NavWrapper>
 							<Switch>
 								<Route exact path='/book' component={Loadable({loader: () => import('./app/book')})}/>
-
+								<Route exact path='/rental' component={Loadable({loader: () => import('./app/rental')})}/>
+								<Route exact path='/overdue' component={Loadable({loader: () => import('./app/overdue')})}/>
+								<Route exact path='/userinfo' component={Loadable({loader: () => import('./app/userinfo')})}/>
+								<Route exact path='/auth' component={Loadable({loader: () => import('./app/auth')})}/>
+								<Route exact path='/sysconfig' component={Loadable({loader: () => import('./app/sysconfig')})}/>
 							</Switch>
 						</NavWrapper>
 					</div>

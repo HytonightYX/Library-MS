@@ -36,7 +36,6 @@ const DescriptionItem = ({title, content}) => (
 	</div>
 )
 
-
 @inject('userStore')
 @observer
 class Login extends React.Component {
@@ -48,24 +47,6 @@ class Login extends React.Component {
 			visible: false,
 			showDrawer: false
 		}
-	}
-
-	async componentWillMount() {
-		this.setState({loading: true})
-		let r = await this.props.userStore.getUserList()
-		this.setState({loading: false, userlist: r.data})
-	}
-
-	doStatus = async (record, status) => {
-		this.setState({loading: true})
-		let r = await this.props.userStore.setUserActive(record, status)
-		this.setState({loading: false, userlist: r.data})
-	}
-
-	handleOk = async () => {
-		this.setState({loading: true})
-		let r = await this.props.userStore.setUserPos({uid: this.state.uid, pos: this.state.pos})
-		this.setState({loading: false, visible: false, userlist: r.data})
 	}
 
 	handleCancel = () => {
@@ -129,7 +110,7 @@ class Login extends React.Component {
 				key: 'action',
 				render: (text, record) => (
 					<div className="m-fun">
-						<Button type='primary' className="m-blue" onClick={() => this.setState({visible: true})}>详情</Button>
+						<Button type='primary' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>详情</Button>
 					</div>
 				),
 			}

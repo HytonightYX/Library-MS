@@ -1,24 +1,28 @@
 export const MENU_MAIN = [
 	{
 		title: '图书管理',
-		icon: 'diff',
+		icon: 'book',
 		children: [
-			{title: '借阅管理', path: '/rental', icon: 'diff'},
-			{title: '库存管理', path: '/book', icon: 'diff'}
+			{title: '库存管理', path: '/book', icon: 'unordered-list'},
+			{title: '借阅管理', path: '/rental', icon: 'reconciliation'}
 		]
 	},
 	{
 		title: '用户管理',
-		icon: 'diff',
+		icon: 'user',
 		children: [
-			{title: '超期罚款', path: '/overdue', icon: 'diff'},
-			{title: '信息修改', path: '/userinfo', icon: 'diff'},
+			{title: '超期罚款', path: '/overdue', icon: 'warning'},
+			{title: '用户列表', path: '/userinfo', icon: 'usergroup-add'},
 		]
 	},
 	{
 		title: '权限管理',
-		icon: 'diff',
-		path: 'auth'
+		icon: 'safety-certificate',
+		path: '/auth'
 	},
-	{title: '系统设置', path: '/conf', icon: 'diff'},
+	{
+		title: '系统设置',
+		path: '/conf',
+		icon: 'setting'
+	},
 ]

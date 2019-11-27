@@ -4,38 +4,25 @@ import { inject, observer } from 'mobx-react'
 import axios from 'axios'
 
 const {RangePicker} = DatePicker
-
+const {Option} = Select
 import './index.less'
-import books from '../../constant/books'
-
-const pStyle = {
-	fontSize: 16,
-	color: 'rgba(0,0,0,0.85)',
-	lineHeight: '24px',
-	display: 'block',
-	marginBottom: 16,
-}
 
 @inject('userStore')
 @observer
-class Rental extends React.Component {
+class Overdue extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			loading: false,
-			userlist: [],
-			visible: false,
-			showDrawer: false,
-			rental_list: null
 		}
 	}
 
 	componentDidMount() {
 		this.setState({loading: true}, () => {
-			axios.get('https://5ddb2a5f041ac10014de0c6f.mockapi.io/rental')
+			axios.get('https://5ddb2a5f041ac10014de0c6f.mockapi.io/overdue')
 				.then((r) => {
 					console.log(r.data)
-					this.setState({rental_list: r.data, loading: false})
+					this.setState({overdue_list: r.data, loading: false})
 				})
 				.catch((e) => message.error('网络错误'))
 				.finally(() => this.setState({loading: false}))
@@ -43,49 +30,36 @@ class Rental extends React.Component {
 	}
 
 	render() {
-		const {rental_list, loading} = this.state
-		const book_list = books.booklist
+		const {overdue_list, loading} = this.state
 		const columns = [
 			{
 				title: '书籍编号',
 				dataIndex: 'book_id',
 			}, {
-				title: '书名',
-				dataIndex: 'title',
-			}, {
-				title: '借阅者编号',
+				title: '读者卡号',
 				dataIndex: 'user_id',
 			}, {
-				title: '借阅者姓名',
-				dataIndex: 'user_username',
+				title: '金额',
+				dataIndex: 'money',
+				render: m => String(m / 10) + '元'
 			}, {
-				title: '借书时间',
-				dataIndex: 'borrow_time',
-				render: t => t.substring(0, 10)
-			}, {
-				title: '还书时间',
-				dataIndex: 'return_time',
-				render: t => ''
-			}, {
-				title: '约定时长',
-				dataIndex: 'duration',
-				render: (text, record) => {
-					if (record.renew) return '60天'
-					else return '30天'
-				}
-			}, {
-				title: '是否续借',
-				dataIndex: 'renew',
+				title: '是否缴纳',
+				dataIndex: 'pay',
 				render: t => {
-					if (t) return <Tag color="#108ee9">是</Tag>
-					else return <Tag color="#87d068">否</Tag>
+					if (t) return <Tag color="blue">已缴纳</Tag>
+					else return <Tag color="red">未缴纳</Tag>
 				}
+			}, {
+				title: '缴纳时间',
+				dataIndex: 'pay_date',
+				render: t => t.substring(0, 10)
 			}, {
 				title: '功能',
 				key: 'action',
 				render: (text, record) => (
 					<div className="m-fun">
-						<Button type='primary' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>操作</Button>
+						<Button type='primary' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>缴纳</Button>
+						<Button type='danger' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>提醒</Button>
 					</div>
 				),
 			}
@@ -98,8 +72,11 @@ class Rental extends React.Component {
 						<Form.Item label="用户卡号">
 							<Input/>
 						</Form.Item>
-						<Form.Item label="借出时间" style={{marginBottom: 0}}>
-							<RangePicker/>
+						<Form.Item label="是否缴纳" style={{marginBottom: 0}}>
+							<Select defaultValue="lucy" style={{ width: 120 }}>
+								<Option value="jack">已缴纳</Option>
+								<Option value="lucy">未缴纳</Option>
+							</Select>
 						</Form.Item>
 						<Form.Item>
 							<Button type="primary">
@@ -119,7 +96,7 @@ class Rental extends React.Component {
 						spinning={loading}
 						indicator={<Icon type="loading" style={{fontSize: 24}} spin/>}
 					>
-						<Table size='small' dataSource={rental_list} columns={columns} rowKey={item => item.id}/>
+						<Table size='small' dataSource={overdue_list} columns={columns} rowKey={item => item.id}/>
 					</Spin>
 				</div>
 			</div>
@@ -127,4 +104,4 @@ class Rental extends React.Component {
 	}
 }
 
-export default Rental
+export default Overdue

@@ -8,25 +8,13 @@ const {RangePicker} = DatePicker
 import './index.less'
 import books from '../../constant/books'
 
-const pStyle = {
-	fontSize: 16,
-	color: 'rgba(0,0,0,0.85)',
-	lineHeight: '24px',
-	display: 'block',
-	marginBottom: 16,
-}
-
 @inject('userStore')
 @observer
-class Rental extends React.Component {
+class Overdue extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			loading: false,
-			userlist: [],
-			visible: false,
-			showDrawer: false,
-			rental_list: null
 		}
 	}
 
@@ -127,4 +115,4 @@ class Rental extends React.Component {
 	}
 }
 
-export default Rental
+export default Overdue
