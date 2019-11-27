@@ -15,6 +15,7 @@ class Overdue extends React.Component {
 		super(props)
 		this.state = {
 			loading: false,
+			search: false
 		}
 	}
 
@@ -31,7 +32,7 @@ class Overdue extends React.Component {
 	}
 
 	render() {
-		const {user_list, loading} = this.state
+		const {user_list, loading, search} = this.state
 		const book_list = books.booklist
 		const columns = [
 			{
@@ -68,32 +69,39 @@ class Overdue extends React.Component {
 
 		return (
 			<div className='g-user'>
-				<Card>
-					<Form layout="inline">
-						<Form.Item label="用户卡号">
-							<Input/>
-						</Form.Item>
-						<Form.Item label="借出时间" style={{marginBottom: 0}}>
-							<RangePicker/>
-						</Form.Item>
-						<Form.Item>
-							<Button type="primary">
-								搜索
-							</Button>
-							<Button style={{marginLeft: 8}} onClick={this.handleReset}>
-								重置
-							</Button>
-						</Form.Item>
-					</Form>
-				</Card>
-
 				<div className="m-userlist">
-
+					<Button type="primary" style={{ marginBottom: 16 }}><Icon type="user-add" />添加用户</Button>
 					<Spin
 						tip="加载中"
 						spinning={loading}
 						indicator={<Icon type="loading" style={{fontSize: 24}} spin/>}
 					>
+						<Card>
+							{!search && (
+								<Form layout="inline">
+									<Form.Item label="用户卡号">
+										<Input/>
+									</Form.Item>
+									<Form.Item label="用户名">
+										<Input/>
+									</Form.Item>
+									<Form.Item label="邮箱">
+										<Input/>
+									</Form.Item>
+									<Form.Item label="姓名">
+										<Input/>
+									</Form.Item>
+									<Form.Item>
+										<Button type="primary">
+											搜索
+										</Button>
+										<Button style={{marginLeft: 8}} onClick={this.handleReset}>
+											重置
+										</Button>
+									</Form.Item>
+								</Form>
+							)}
+						</Card>
 						<Table size='small' dataSource={user_list} columns={columns} rowKey={item => item.id}/>
 					</Spin>
 				</div>
