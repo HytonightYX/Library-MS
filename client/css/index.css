@@ -1,4 +1,5 @@
 @import "./flex.css";
+@import "./result.css";
 
 .container, body, html {
     margin: 0;
