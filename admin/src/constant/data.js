@@ -22,7 +22,7 @@ export const MENU_MAIN = [
 	},
 	{
 		title: '系统设置',
-		path: '/conf',
+		path: '/sysconfig',
 		icon: 'setting'
 	},
 ]

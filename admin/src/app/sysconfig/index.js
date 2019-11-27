@@ -1,16 +1,16 @@
 import React from 'react'
-import { Form, Table, Input, Button, Skeleton, Modal, Tag, Divider, message, Card, Row, Col, Select, DatePicker, Drawer, Spin, Icon } from 'antd'
-import { inject, observer } from 'mobx-react'
-import axios from 'axios'
-
-const {RangePicker} = DatePicker
-
+import { Form, Radio, Table, Input, Button, Skeleton, Modal, Tag, Divider, message, Card, Row, Col, Select, DatePicker, Drawer, Spin, Icon, TimePicker, Cascader, InputNumber, Switch, Checkbox } from 'antd'
 import './index.less'
-import books from '../../constant/books'
 
-@inject('userStore')
-@observer
-class Overdue extends React.Component {
+const {Option} = Select
+
+const formLayout = {
+	labelCol: { span: 7 },
+	wrapperCol: { span: 9 },
+}
+
+@Form.create()
+class SystemConfig extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -18,101 +18,140 @@ class Overdue extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		this.setState({loading: true}, () => {
-			axios.get('https://5ddb2a5f041ac10014de0c6f.mockapi.io/rental')
-				.then((r) => {
-					console.log(r.data)
-					this.setState({rental_list: r.data, loading: false})
-				})
-				.catch((e) => message.error('网络错误'))
-				.finally(() => this.setState({loading: false}))
-		})
-	}
-
 	render() {
-		const {rental_list, loading} = this.state
-		const book_list = books.booklist
-		const columns = [
-			{
-				title: '书籍编号',
-				dataIndex: 'book_id',
-			}, {
-				title: '书名',
-				dataIndex: 'title',
-			}, {
-				title: '借阅者编号',
-				dataIndex: 'user_id',
-			}, {
-				title: '借阅者姓名',
-				dataIndex: 'user_username',
-			}, {
-				title: '借书时间',
-				dataIndex: 'borrow_time',
-				render: t => t.substring(0, 10)
-			}, {
-				title: '还书时间',
-				dataIndex: 'return_time',
-				render: t => ''
-			}, {
-				title: '约定时长',
-				dataIndex: 'duration',
-				render: (text, record) => {
-					if (record.renew) return '60天'
-					else return '30天'
-				}
-			}, {
-				title: '是否续借',
-				dataIndex: 'renew',
-				render: t => {
-					if (t) return <Tag color="#108ee9">是</Tag>
-					else return <Tag color="#87d068">否</Tag>
-				}
-			}, {
-				title: '功能',
-				key: 'action',
-				render: (text, record) => (
-					<div className="m-fun">
-						<Button type='primary' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>操作</Button>
-					</div>
-				),
-			}
-		]
-
 		return (
-			<div className='g-user'>
-				<Card>
-					<Form layout="inline">
-						<Form.Item label="用户卡号">
-							<Input/>
-						</Form.Item>
-						<Form.Item label="借出时间" style={{marginBottom: 0}}>
-							<RangePicker/>
-						</Form.Item>
-						<Form.Item>
-							<Button type="primary">
-								搜索
-							</Button>
-							<Button style={{marginLeft: 8}} onClick={this.handleReset}>
-								重置
-							</Button>
-						</Form.Item>
+			<div className="g-content-sub m-flex">
+				<div>
+					<Divider type="horizontal" orientation='left'>系统参数</Divider>
+					<Form className="ant-advanced-search-form" {...formLayout}>
+						<Row gutter={24}>
+							<Col span={8}>
+								<Form.Item label='图书馆名称'>
+									<Input placeholder="placeholder" defaultValue='HZNU图书馆'/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='域名配置'>
+									<Input placeholder="域名配置" defaultValue='http://yunxi.site:8082'/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='系统主题'>
+									<Select defaultValue="light">
+										<Option value="light">亮色</Option>
+										<Option value="dark">暗色</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+						</Row>
 					</Form>
-				</Card>
-
-				<div className="m-userlist">
-
-					<Spin
-						tip="加载中"
-						spinning={loading}
-						indicator={<Icon type="loading" style={{fontSize: 24}} spin/>}
-					>
-						<Table size='small' dataSource={rental_list} columns={columns} rowKey={item => item.id}/>
-					</Spin>
 				</div>
+
+				<div>
+					<Divider type="horizontal" orientation='left'>编目参数</Divider>
+
+					<Form className="ant-advanced-search-form" {...formLayout}>
+						<Row gutter={24}>
+							<Col span={8}>
+								<Form.Item label='系统使用图书分类法'>
+									<Select defaultValue="1">
+										<Option value="1">中图法</Option>
+										<Option value="2">中图法1</Option>
+										<Option value="3">中图法2</Option>
+										<Option value="4">中图法3</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='索书号分隔符'>
+									<Input defaultValue="/"/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='索书号字段'>
+									<Input defaultValue="090d"/>
+								</Form.Item>
+							</Col>
+						</Row>
+
+						<Checkbox defaultChecked>使用拼音/题名压缩键</Checkbox>
+						<Checkbox>采用最大次种号生成索书号</Checkbox>
+
+					</Form>
+				</div>
+
+				<div>
+					<Divider type="horizontal" orientation='left'>流通参数</Divider>
+
+					<Form className="ant-advanced-search-form" {...formLayout}>
+						<Row gutter={24}>
+							<Col span={8}>
+								<Form.Item label='借阅延时时间（毫秒）'>
+									<Input placeholder="借阅延时时间" defaultValue='3000'/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='个人借阅限额（本）'>
+									<Input defaultValue='5'/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='借阅提示价格（元）'>
+									<Input defaultValue='10'/>
+								</Form.Item>
+							</Col>
+						</Row>
+
+						<Row gutter={24}>
+							<Col span={8}>
+								<Form.Item label='罚款尾数处理'>
+									<Select defaultValue="1">
+										<Option value="1">取整</Option>
+										<Option value="2">保留1位小数</Option>
+										<Option value="3">保留2位小数</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='默认借阅时长（天）'>
+									<Input defaultValue='30'/>
+								</Form.Item>
+							</Col>
+
+							<Col span={8}>
+								<Form.Item label='默认续借时长（天）'>
+									<Input defaultValue='30'/>
+								</Form.Item>
+							</Col>
+						</Row>
+
+						<Checkbox defaultChecked>允许当天还书</Checkbox>
+						<Checkbox>允许借阅同种书</Checkbox>
+						<Checkbox defaultChecked>提供委托借阅服务</Checkbox>
+
+					</Form>
+				</div>
+
+				<Row>
+					<Col span={24} style={{textAlign: 'right'}}>
+						<Button type="primary" htmlType="submit">
+							保存
+						</Button>
+						<Button style={{marginLeft: 8}}>
+							重置
+						</Button>
+					</Col>
+				</Row>
 			</div>
 		)
 	}
 }
 
-export default Overdue
+export default SystemConfig

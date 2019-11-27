@@ -13,6 +13,7 @@ export default () => (
 					<div className='app-root'>
 						<NavWrapper>
 							<Switch>
+								<Route exact path='/' component={Loadable({loader: () => import('./app/book')})}/>
 								<Route exact path='/book' component={Loadable({loader: () => import('./app/book')})}/>
 								<Route exact path='/rental' component={Loadable({loader: () => import('./app/rental')})}/>
 								<Route exact path='/overdue' component={Loadable({loader: () => import('./app/overdue')})}/>
