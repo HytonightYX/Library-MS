@@ -1,14 +1,3 @@
-var mode = process.env.REACT_APP_MY_VAR
-var API_SERVER = 'https://133.167.73.231:8080'
-
-if (mode === 'development') {
-  API_SERVER = 'http://127.0.0.1:8080'
-  // API_SERVER = 'http://192.168.50.192:8080'
-}
-
-if (mode === 'production') {
-  // API_SERVER = 'http://133.167.73.231:8080'
-  API_SERVER = 'https://manqc.site'
-}
-
-export { API_SERVER }
+let API_SERVER = 'http://yunxi.site:8084'
+let API_MOCK = 'https://5ddb2a5f041ac10014de0c6f.mockapi.io'
+export { API_SERVER, API_MOCK }

@@ -1,40 +1,34 @@
 import { observable, action, runInAction } from 'mobx'
 import axios from 'axios'
-import { message } from 'antd'
 import * as urls from '@constant/urls'
-import token from 'util/token.js'
+import { message } from 'antd'
 
 class User {
 	@observable
-	currUser = undefined
+		// currUser = {username: 'HytonightYX'}
+	currUser = null
 
 	@action
-	async getUserList() {
-		const r = await axios.post(urls.API_USER_LIST)
+	async login(params) {
+		const r = await axios.post(urls.API_USER_LOGIN, params)
 		if (r && r.status === 200) {
-			return r.data
+			const data = r.data.data
+			if (data && params.password === data.password) {
+				message.success('登录成功', 0.7)
+				runInAction(() => {
+					this.currUser = r.data.data
+				})
+			} else {
+				console.log(params.password, data.password)
+				message.error('账户名或密码错误')
+			}
 		}
 	}
 
-  @action
-  async setUserActive(params,status) {
-    const r = await axios.post(urls.API_USER_ACTIVE,{id: params.key, status: status})
-    if (r && r.status === 200) {
-      return r.data
-    }
-  }
-
-  @action
-  async setUserPos(params) {
-    const r = await axios.post(urls.API_USER_POS,params)
-    if (r && r.status === 200) {
-      return r.data
-    }
-  }
-
-
-  
-
+	@action
+	async logout() {
+		this.currUser = null
+	}
 }
 
 export default new User()
