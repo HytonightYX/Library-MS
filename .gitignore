@@ -3,6 +3,7 @@
 **/.vscode
 **/*.yarn.lock
 
+server/secret.js
 .idea
 .vscode
 *.jpg
