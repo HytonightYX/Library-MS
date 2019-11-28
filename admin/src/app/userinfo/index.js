@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Table, Input, Button, Skeleton, Modal, Tag, Divider, message, Card, Row, Col, Select, DatePicker, Drawer, Spin, Icon } from 'antd'
+import { Form, Radio, Table, Input, Button, Skeleton, Modal, Tag, Divider, message, Card, Row, Col, Select, DatePicker, Drawer, Spin, Icon } from 'antd'
 import { inject, observer } from 'mobx-react'
 import axios from 'axios'
 
@@ -10,12 +10,14 @@ import books from '../../constant/books'
 
 @inject('userStore')
 @observer
+@Form.create()
 class Overdue extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			loading: false,
-			search: false
+			search: false,
+			visAddUser: false
 		}
 	}
 
@@ -33,6 +35,11 @@ class Overdue extends React.Component {
 
 	render() {
 		const {user_list, loading} = this.state
+		const {getFieldDecorator} = this.props.form
+		const formItemLayout = {
+			labelCol: {span: 5},
+			wrapperCol: {span: 16}
+		}
 		const columns = [
 			{
 				title: '用户卡号',
@@ -59,8 +66,8 @@ class Overdue extends React.Component {
 				key: 'action',
 				render: (text, record) => (
 					<div className="m-fun">
-						<Button type='primary' size='small' size='small' className="m-blue">修改</Button>
-						<Button type='danger' size='small' size='small' className="m-blue">删除</Button>
+						<Button type='primary' size='small' className="m-blue">修改</Button>
+						<Button type='danger' size='small' className="m-blue">删除</Button>
 					</div>
 				),
 			}
@@ -69,7 +76,7 @@ class Overdue extends React.Component {
 		return (
 			<div className='g-content-sub'>
 				<div className="m-userlist">
-					<Button type="primary" style={{marginBottom: 16}}><Icon type="user-add"/>添加用户</Button>
+					<Button type="primary" style={{marginBottom: 16}} onClick={() => this.setState({visAddUser: true})}><Icon type="user-add"/>添加用户</Button>
 					<Card>
 						<Form layout="inline">
 							<Form.Item label="用户卡号">
@@ -102,6 +109,75 @@ class Overdue extends React.Component {
 						<Table size='small' dataSource={user_list} columns={columns} rowKey={item => item.id}/>
 					</Spin>
 				</div>
+
+				<Modal
+					title="创建用户"
+					visible={this.state.visAddUser}
+					onOk={() => this.setState({visAddUser: false})}
+					onCancel={() => {this.setState({visAddUser: false})}}
+				>
+					<Form layout="horizontal">
+						<Form.Item label="用户名" {...formItemLayout}>
+							{
+								getFieldDecorator('username', {
+									initialValue: ''
+								})(
+									<Input type="text" placeholder="请输入用户名..."/>
+								)
+							}
+						</Form.Item>
+						<Form.Item label="姓名" {...formItemLayout}>
+							{
+								getFieldDecorator('name', {
+									initialValue: ''
+								})(
+									<Input type="text" placeholder="请输入姓名..."/>
+								)
+							}
+						</Form.Item>
+						<Form.Item label="邮箱" {...formItemLayout}>
+							{
+								getFieldDecorator('email', {
+									initialValue: ''
+								})(
+									<Input type="text" placeholder="请输入邮箱..."/>
+								)
+							}
+						</Form.Item>
+						<Form.Item label="手机" {...formItemLayout}>
+							{
+								getFieldDecorator('phone', {
+									initialValue: ''
+								})(
+									<Input type="text" placeholder="请输入手机..."/>
+								)
+							}
+						</Form.Item>
+						<Form.Item label="性别" {...formItemLayout}>
+							{
+								getFieldDecorator('sex', {
+									initialValue: '',
+								})(
+									<Radio.Group onChange={this.onChange} value={this.state.value}>
+										<Radio value={1}>男</Radio>
+										<Radio value={2}>女</Radio>
+									</Radio.Group>
+								)
+							}
+						</Form.Item>
+						<Form.Item label="状态" {...formItemLayout}>
+							{
+								getFieldDecorator('state', {
+									initialValue: 1
+								})(
+									<Select>
+										<Select.Option value={1}>开启</Select.Option>
+										<Select.Option value={0}>关闭</Select.Option>
+									</Select>
+								)}
+						</Form.Item>
+					</Form>
+				</Modal>
 			</div>
 		)
 	}

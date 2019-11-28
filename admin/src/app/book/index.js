@@ -83,7 +83,6 @@ class Login extends React.Component {
 
 	render() {
 		const booklist = books.booklist
-		console.log(booklist)
 		const {visible, loading} = this.state
 
 		const columns = [
@@ -110,7 +109,8 @@ class Login extends React.Component {
 				key: 'action',
 				render: (text, record) => (
 					<div className="m-fun">
-						<Button type='primary' size='small' className="m-blue" onClick={() => this.setState({visible: true})}>详情</Button>
+						<Button type='primary' size='small' className="m-blue"
+						        onClick={() => this.setState({visible: true})}>详情</Button>
 					</div>
 				),
 			}
@@ -124,63 +124,33 @@ class Login extends React.Component {
 		return (
 			<div className='g-user'>
 				<Card>
-					<Form className="ant-advanced-search-form" {...formItemLayout}>
-						<Row gutter={24}>{this.getFields()}</Row>
-						<Row>
-							<Col span={24} style={{textAlign: 'right'}}>
-								<Button type="primary">
-									搜索
-								</Button>
-								<Button style={{marginLeft: 8}} onClick={this.handleReset}>
-									重置
-								</Button>
-								<a style={{marginLeft: 8, fontSize: 12}} onClick={this.toggle}>
-									展开 <Icon type={this.state.expand ? 'up' : 'down'}/>
-								</a>
-							</Col>
-						</Row>
+					<Form layout="inline">
+						<Form.Item label="书籍编号">
+							<Input/>
+						</Form.Item>
+						<Form.Item label="书名关键字">
+							<Input/>
+						</Form.Item>
+						<Form.Item label="ISBN">
+							<Input/>
+						</Form.Item>
+						<Form.Item label="作者">
+							<Input/>
+						</Form.Item>
+						<Form.Item>
+							<Button type="primary">
+								搜索
+							</Button>
+							<Button style={{marginLeft: 8}} onClick={this.handleReset}>
+								重置
+							</Button>
+						</Form.Item>
 					</Form>
 				</Card>
-				<div className="m-userlist">
-					<Table size='small' dataSource={booklist} columns={columns}/>
-				</div>
 
-				<Modal
-					// visible={visible}
-					onOk={this.handleOk}
-					confirmLoading={loading}
-					onCancel={this.handleCancel}
-				>
-					<Form layout="vertical" hideRequiredMark>
-						<Form.Item label="书名">
-							<Select placeholder="Please select an owner">
-								<Option value="xiao">Xiaoxiao Fu</Option>
-								<Option value="mao">Maomao Zhou</Option>
-							</Select>
-						</Form.Item>
-						<Form.Item label="Type">
-							<Select placeholder="Please choose the type">
-								<Option value="private">Private</Option>
-								<Option value="public">Public</Option>
-							</Select>
-						</Form.Item>
-						<Form.Item label="Approver">
-							<Select placeholder="Please choose the approver">
-								<Option value="jack">Jack Ma</Option>
-								<Option value="tom">Tom Liu</Option>
-							</Select>
-						</Form.Item>
-						<Form.Item label="DateTime">
-							<DatePicker.RangePicker
-								style={{width: '100%'}}
-								getPopupContainer={trigger => trigger.parentNode}
-							/>
-						</Form.Item>
-						<Form.Item label="Description">
-							<Input.TextArea rows={4} placeholder="please enter url description"/>
-						</Form.Item>
-					</Form>
-				</Modal>
+				<div className="m-userlist">
+					<Table size='small' dataSource={booklist} columns={columns} rowKey={item => item.id}/>
+				</div>
 
 				<Drawer
 					width={640}
