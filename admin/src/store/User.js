@@ -5,7 +5,7 @@ import { message } from 'antd'
 
 class User {
 	@observable
-		// currUser = {username: 'HytonightYX'}
+	// currUser = null
 	currUser = {id: "fe969151-7e30-45dd-8a01-6af589939a17", username: "admin", name: "张三", password: "admin"}
 
 	@action
@@ -26,8 +26,8 @@ class User {
 		}
 	}
 
-	@action
-	async logout() {
+	@action.bound
+	logout() {
 		this.currUser = null
 	}
 }

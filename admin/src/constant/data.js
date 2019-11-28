@@ -1,5 +1,10 @@
 export const MENU_MAIN = [
 	{
+		title: '工作台',
+		path: '/',
+		icon: 'dashboard'
+	},
+	{
 		title: '图书管理',
 		icon: 'book',
 		children: [

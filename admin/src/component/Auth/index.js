@@ -14,7 +14,7 @@ class Auth extends React.Component {
 	}
 
 	render() {
-		if (this.currUser) return this.props.children
+		if (this.currUser) return <>{this.props.children}</>
 		else {
 			message.info('请先登录！', 0.5)
 			return <Redirect to='/login'/>
