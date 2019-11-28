@@ -2,8 +2,6 @@ import React from 'react'
 import { Form, Table, Input, Button, Skeleton, Modal, Tag, Divider, message, Card, Row, Col, Select, DatePicker, Drawer, Spin, Icon } from 'antd'
 import { inject, observer } from 'mobx-react'
 import axios from 'axios'
-
-const {RangePicker} = DatePicker
 const {Option} = Select
 import './index.less'
 
@@ -66,7 +64,7 @@ class Overdue extends React.Component {
 		]
 
 		return (
-			<div className='g-user'>
+			<div className='g-content-sub'>
 				<Card>
 					<Form layout="inline">
 						<Form.Item label="用户卡号">

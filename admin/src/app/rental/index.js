@@ -92,7 +92,7 @@ class Rental extends React.Component {
 		]
 
 		return (
-			<div className='g-user'>
+			<div className='g-content-sub'>
 				<Card>
 					<Form layout="inline">
 						<Form.Item label="用户卡号">
