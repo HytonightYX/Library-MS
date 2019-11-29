@@ -8,6 +8,7 @@
 }
 * {
     box-sizing: border-box;
+    font-family: 'Noto Sans SC', sans-serif;
 }
 a {
     text-decoration: none;
@@ -42,6 +43,7 @@ a {
     width: 165px;
     padding-top: calc(45px - 0.5em);
     text-align: center;
+    cursor: pointer;
 }
 .container-menu-item a {
     color: #fff;
@@ -281,9 +283,10 @@ a {
     border: 1px solid #ccccbb;
     font-size: 20px;
     font-weight: 300;
+    background: #fff;
 }
 .main-search-wrapper input[type="text"]:focus {
-    border: 1px solid red;
+    border: 1px solid #b40908;
 }
 .main-search-wrapper button {
     width: 100px;
@@ -318,6 +321,7 @@ a {
     cursor: pointer;
     text-align: center;
     transition: all 250ms ease;
+    background: #fff;
 }
 .main-search-wrapper input[type="radio"]:checked + label:before {
     background: #b40908;

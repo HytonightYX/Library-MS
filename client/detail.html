@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>detail</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
     <script type="text/javascript" src="./js/books.js"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -15,7 +16,7 @@
             <div class="container-menu-logo">LOGO</div>
             <div id="block"></div>
             <div class="container-menu-item">
-                <a href="">首页</a>
+                <a href="./index.html">首页</a>
             </div>
             <div class="container-menu-item">
                 <a>图书借阅</a>
@@ -28,7 +29,8 @@
             </div>
             <div class="container-menu-info">
                 <div class="menu-info-avatar">
-                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%">
+                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%"
+                        onclick="location.href = './search.html'">
                 </div>
             </div>
         </div>
@@ -50,6 +52,40 @@
                 </div>
                 <br>
                 <div class="main-detail-intro">
+                    <h4><span>馆藏情况</span>&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·</h4>
+                    <div class="detail-intro-intent flex flex-column" id="collection">
+                        <div class="flex flex-space-between">
+                            <p>索书号</p>
+                            <p>条形码</p>
+                            <p>馆藏地</p>
+                            <p>书刊状态</p>
+                            <p>定位信息</p>
+                        </div>
+                        <div class="flex flex-space-between">
+                            <p>H319.4:C912.11/CK1</p>
+                            <p>01456938</p>
+                            <p>仓前校区</p>
+                            <p style="color: orange">预订</p>
+                            <p>二楼南2区17排A面3列2层</p>
+                        </div>
+                        <div class="flex flex-space-between">
+                            <p>H319.4:C912.11/CK1</p>
+                            <p>01456939</p>
+                            <p>仓前校区</p>
+                            <p style="color: green">可借</p>
+                            <p>二楼南2区17排A面3列2层</p>
+                        </div>
+                        <div class="flex flex-space-between">
+                            <p>H319.4:C912.11/CK1</p>
+                            <p>01456940</p>
+                            <p>仓前校区</p>
+                            <p style="color: red">已借</p>
+                            <p>二楼南2区17排A面3列2层</p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="main-detail-intro">
                     <h4><span>内容简介</span>&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·</h4>
                     <div class="detail-intro-intent" id="content"></div>
                 </div>
@@ -63,6 +99,7 @@
                     <h4><span>标签</span>&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·</h4>
                     <div class="flex flex-wrap" id="tags"></div>
                 </div>
+                <br>
                 <div class="main-detail-intro">
                     <h4><span>目录</span>&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·</h4>
                     <div class="detail-intro-intent" id="catalog"></div>
