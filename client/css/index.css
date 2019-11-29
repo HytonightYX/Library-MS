@@ -1,6 +1,7 @@
 @import "./flex.css";
 @import "./result.css";
 @import "./detail.css";
+@import "./info.css";
 
 .container, body, html {
     margin: 0;

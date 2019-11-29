@@ -1,0 +1,51 @@
+.main-info-wrapper {
+    width: 60%;
+}
+
+.main-info {
+    border-radius: 10px;
+    background: #f5f5f5;
+    padding: 30px 50px;
+    font-size: 13px;
+    position: relative;
+}
+a#update {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #b40908;
+}
+.main-info:not(:first-child) {
+    margin-top: 30px;
+}
+.main-info p {
+    margin: 0;
+}
+.main-info-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    overflow: hidden;
+}
+.main-info-detail {
+    margin-left: 30px;
+    line-height: 1.5;
+}
+.main-info-detail span:nth-child(odd) {
+    color: #666;
+}
+.main-read-item:first-child {
+    border-bottom: 1px solid #494949;
+    color: #494949;
+}
+.main-read-item p {
+    line-height: 2;
+    width: 20%;
+    text-align: center;
+    word-break: break-all;
+}
+.main-read-item a {
+    color: #b40908;
+    text-decoration: underline;
+    cursor: pointer;
+}

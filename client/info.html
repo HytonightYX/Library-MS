@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>info</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-menu flex">
+            <div class="container-menu-logo">LOGO</div>
+            <div id="block"></div>
+            <div class="container-menu-item" onclick="location.href = './index.html'">
+                <a>首页</a>
+            </div>
+            <div class="container-menu-search" onclick="location.href = './search.html'">
+                <img src="./assets/icon/search.png" alt="" id="search" width="30px" height="30px">
+            </div>
+            <div class="container-menu-info">
+                <div class="menu-info-avatar">
+                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%"
+                        onclick="location.href = './login.html'">
+                </div>
+            </div>
+        </div>
+        <div class="container-main-wrapper flex flex-center" style="padding: 180px 0">
+            <div class="main-info-wrapper flex flex-column">
+                <div class="main-info flex">
+                    <div class="main-info-avatar">
+                        <img src="./assets/image/pic1.jpg" alt="avatar" width="100%" height="100%">
+                    </div>
+                    <div class="main-info-detail flex flex-column flex-space-between">
+                        <p><span>学号:&nbsp;</span><span>2017212212299</span></p>
+                        <p><span>姓名:&nbsp;</span><span>张三丰</span></p>
+                        <p><span>性别:&nbsp;</span><span>男</span></p>
+                        <p><span>邮箱:&nbsp;</span><span>white_yasha@163.com</span></p>
+                        <p><span>手机:&nbsp;</span><span>13212341234</span></p>
+                    </div>
+                    <a id="update" href="">修改</a>
+                </div>
+                <br>
+                <div class="main-info flex flex-column">
+                    <div class="flex main-read-item">
+                        <p>书籍名称</p>
+                        <p>条形码</p>
+                        <p>借阅日期</p>
+                        <p>应还日期</p>
+                        <p>操作</p>
+                    </div>
+                    <div class="flex main-read-item">
+                        <p>《人性的弱点》</p>
+                        <p>01456938</p>
+                        <p>2019/07/01</p>
+                        <p>2019/10/01</p>
+                        <p><a>续借</a>&nbsp;<a>归还</a></p>
+                    </div>
+                    <div class="flex main-read-item">
+                        <p>《短篇小说写作指南》</p>
+                        <p>01456812</p>
+                        <p>2019/08/12</p>
+                        <p>2019/11/12</p>
+                        <p><a>续借</a>&nbsp;<a>归还</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-footer container-main-wrapper flex flex-center">
+            <p>powered by wyasha</p>
+        </div>
+    </div>
+</body>
+
+</html>
