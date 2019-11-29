@@ -44,14 +44,14 @@
   font-weight: 300;
 }
 .g-login .input-wrap .m-input input:focus {
-  border: 1px solid red;
+  border: 1px solid #b40908;
 }
 .g-login .input-wrap .m-button {
   width: 100%;
 }
 .g-login .input-wrap .m-button button {
   color: #ffffff;
-  background-color: red;
+  background-color: #b40908;
   padding-bottom: 6px;
   width: 100%;
   font-size: 16px;

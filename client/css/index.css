@@ -71,6 +71,7 @@ a {
     border-radius: 17px;
     border: 1px solid #fff;
     overflow: hidden;
+    cursor: pointer;
 }
 /* container-slider */
 .container-slider-wrapper {
