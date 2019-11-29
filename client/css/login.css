@@ -1,0 +1,66 @@
+.g-login {
+  height: 100vh;
+  background-color: #efeee7;
+}
+.g-login .bar-warp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #8f9189 2px solid;
+  height: 300px;
+}
+.g-login .login-img {
+  padding-top: 1px;
+}
+.g-login .m-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.g-login .input-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 300px;
+  width: 350px;
+}
+.g-login .input-wrap .m-input {
+  width: 100%;
+}
+.g-login .input-wrap .m-input input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 6px;
+  line-height: 40px;
+  padding: 10px 20px;
+  outline-style: none;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #ccccbb;
+  font-size: 16px;
+  font-weight: 300;
+}
+.g-login .input-wrap .m-input input:focus {
+  border: 1px solid red;
+}
+.g-login .input-wrap .m-button {
+  width: 100%;
+}
+.g-login .input-wrap .m-button button {
+  color: #ffffff;
+  background-color: red;
+  padding-bottom: 6px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  outline: none;
+}
+.g-login .input-wrap .m-button button:active {
+  background-color: #b40908;
+}
+/*# sourceMappingURL=login.css.map */
