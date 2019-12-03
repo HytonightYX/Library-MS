@@ -2,10 +2,14 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>search</title>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title></title>
     <link rel="stylesheet" href="./css/index.css">
+    <style type="text/css">
+        button {
+            margin: 0 30px;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,24 +28,15 @@
             </div>
             <div class="container-menu-info">
                 <div class="menu-info-avatar">
-                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%" onclick="location.href = './login.html'">
+                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%"
+                        onclick="location.href = './login.html'">
                 </div>
             </div>
         </div>
         <div class="container-main-wrapper flex flex-center" style="height: calc(100vh - 114px); padding: 0">
-            <div class="main-search-wrapper">
-                <input type="text"><button onclick="location.href = './result.html'">搜索</button>
-                <div class="flex flex-center" style="margin-top: 20px;">
-                    <div style="margin-right: 50px">
-                        <input type="radio" id="name" name="radio" checked><label for="name">按书名</label>
-                    </div>
-                    <div style="margin-right: 50px">
-                        <input type="radio" id="author" name="radio"><label for="author">按作者</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="isbn" name="radio"><label for="author">按ISBN编号</label>
-                    </div>
-                </div>
+            <div class="main-search-wrapper flex flex-center">
+                <button style="border-radius: 5px;" onclick="location.href = './show_card.html'">借书</button>
+                <button style="border-radius: 5px;">还书</button>
             </div>
         </div>
         <div class="container-footer container-main-wrapper flex flex-center">

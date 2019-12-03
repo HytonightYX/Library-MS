@@ -270,7 +270,7 @@ a {
 }
 /* container-search */
 .main-search-wrapper {
-    margin-top: 350px;
+    margin-top: calc(50vh - 100px);
     width: 50%;
     height: 200px;
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/index.css">
+    <style type="text/css">
+        .show-card {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #494949;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #494949;
+        }
+
+        center {
+            color: #494949;
+            font-size: 36px;
+            letter-spacing: 5px;
+        }
+    </style>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-menu flex">
+            <div class="container-menu-logo">LOGO</div>
+            <div id="block"></div>
+            <div class="container-menu-item" onclick="location.href = './index.html'">
+                <a>首页</a>
+            </div>
+            <div class="container-menu-item" onclick="location.href = './process.html'">
+                <a>借还书籍</a>
+            </div>
+            <div class="container-menu-search" onclick="location.href = './search.html'">
+                <img src="./assets/icon/search.png" alt="" id="search" width="30px" height="30px">
+            </div>
+            <div class="container-menu-info">
+                <div class="menu-info-avatar">
+                    <img src="./assets/image/pic1.jpg" alt="" width="100%" height="100%"
+                        onclick="location.href = './login.html'">
+                </div>
+            </div>
+        </div>
+        <div class="container-main-wrapper flex flex-center" style="height: calc(100vh - 114px); padding: 0">
+            <div class="main-search-wrapper" style="margin-top: calc(50vh - 150px); height: 300px; width: 40%;">
+                <div class="show-card flex flex-column flex-center">
+                    <center>请在此放置借书卡</center>
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="container-footer container-main-wrapper flex flex-center">
+            <p>powered by wyasha</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(() => {
+        setTimeout(() => {
+            const img_path =
+                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575354223863&di=c7c13cce8d0c595c0e339cf82f25b19f&imgtype=0&src=http%3A%2F%2Fpic05.997788.com%2Fpic_search%2F00%2F21%2F98%2F80%2Fse21988021.jpg";
+            $(".show-card").html($("<img src='" + img_path + "' alt='' height='100%'>"));
+            setTimeout(() => location.href = "./borrow.html", 1000);
+        }, 2000);
+    });
+</script>
+
+</html>
