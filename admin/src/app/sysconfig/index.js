@@ -55,7 +55,7 @@ class SystemConfig extends React.Component {
 					<Form className="ant-advanced-search-form" {...formLayout}>
 						<Row gutter={24}>
 							<Col span={8}>
-								<Form.Item label='系统使用图书分类法'>
+								<Form.Item label='图书分类法'>
 									<Select defaultValue="1">
 										<Option value="1">中图法</Option>
 										<Option value="2">中图法1</Option>

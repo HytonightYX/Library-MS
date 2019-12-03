@@ -48,7 +48,7 @@ class Dashboard extends React.Component {
 											<Icon type="book" style={{fontSize: 24}}/>
 										</div>
 										<div className="clear">
-											<div className="text-muted">在库图书</div>
+											<div className="text-muted">在库</div>
 											<h2>30423</h2>
 										</div>
 									</div>

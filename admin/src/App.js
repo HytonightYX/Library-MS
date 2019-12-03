@@ -20,6 +20,8 @@ export default () => (
 								<Route exact path='/userinfo' component={Loadable({loader: () => import('./app/userinfo')})}/>
 								<Route exact path='/auth' component={Loadable({loader: () => import('./app/auth')})}/>
 								<Route exact path='/sysconfig' component={Loadable({loader: () => import('./app/sysconfig')})}/>
+								<Route exact path='/err/304' component={Loadable({loader: () => import('./app/err/304')})}/>
+								<Route component={Loadable({loader: () => import('./app/err/404')})} />
 							</Switch>
 						</NavWrapper>
 					</div>
